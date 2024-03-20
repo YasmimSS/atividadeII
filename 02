@@ -1,0 +1,17 @@
+<?php
+function calcularNotas($valor) {
+    $notas = [100, 50, 20, 10, 5, 2, 1];
+    
+    echo $valor . "\n";
+
+    foreach ($notas as $nota) {
+        $quantidade = intval($valor / $nota);
+        echo $quantidade . " nota(s) de R$ " . number_format($nota, 2, ',', '.') . "\n";
+        $valor %= $nota;
+    }
+}
+
+$valor = intval(readline());
+
+calcularNotas($valor);
+?>
