@@ -1,0 +1,21 @@
+<?php
+while (true) {
+    $num_lesmas = readline();
+
+    if ($num_lesmas === false) {
+        break;
+    }
+
+    $velocidades = explode(" ", readline());
+
+    $maior_velocidade = max($velocidades);
+    $nivel = 1;
+    if ($maior_velocidade >= 10 && $maior_velocidade < 20) {
+        $nivel = 2;
+    } elseif ($maior_velocidade >= 20) {
+        $nivel = 3;
+    }
+
+    echo $nivel . "\n";
+}
+?>
