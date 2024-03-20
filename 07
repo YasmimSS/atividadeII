@@ -1,0 +1,28 @@
+<?php
+function calcularMinutosParaDormir($h1, $m1, $h2, $m2) {
+    $minutos_atual = $h1 * 60 + $m1;
+    $minutos_alarme = $h2 * 60 + $m2;
+    
+    $minutos_restantes = $minutos_alarme - $minutos_atual;
+    
+    if ($minutos_restantes <= 0) {
+        $minutos_restantes += 24 * 60; // Adicionando 24 horas
+    }
+    
+    return $minutos_restantes;
+}
+
+while (true) {
+    $entrada = explode(" ", readline());
+    $h1 = intval($entrada[0]);
+    $m1 = intval($entrada[1]);
+    $h2 = intval($entrada[2]);
+    $m2 = intval($entrada[3]);
+    
+    if ($h1 == 0 && $m1 == 0 && $h2 == 0 && $m2 == 0) {
+        break;
+    }
+    
+    echo calcularMinutosParaDormir($h1, $m1, $h2, $m2) . PHP_EOL;
+}
+?>
