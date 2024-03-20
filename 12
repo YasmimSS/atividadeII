@@ -1,0 +1,20 @@
+<?php
+function mdc($a, $b) {
+    while ($b != 0) {
+        $r = $a % $b;
+        $a = $b;
+        $b = $r;
+    }
+    return $a;
+}
+
+$casos_teste = intval(trim(fgets(STDIN)));
+
+for ($i = 0; $i < $casos_teste; $i++) {
+    list($ricardo, $vicente) = explode(' ', trim(fgets(STDIN)));
+    
+    $tamanho_max_pilha = mdc($ricardo, $vicente);
+    
+    echo $tamanho_max_pilha . PHP_EOL;
+}
+?>
