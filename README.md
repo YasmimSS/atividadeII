@@ -1,5 +1,3 @@
-# atividadeII
-Exercícios do beecrowd em php
 <?php
 function maior($a, $b) {
     return (($a + $b + abs($a - $b)) / 2);
