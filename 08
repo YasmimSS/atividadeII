@@ -1,0 +1,35 @@
+<?php
+function criptografar($mensagem) {
+    $tamanho = strlen($mensagem);
+    $metade = intval($tamanho / 2);
+
+    for ($i = 0; $i < $tamanho; $i++) {
+        if (ctype_alpha($mensagem[$i])) {
+            $mensagem[$i] = chr(ord($mensagem[$i]) + 3);
+        }
+    }
+
+    $mensagem = strrev($mensagem);
+
+    for ($i = $metade; $i < $tamanho; $i++) {
+        if (ctype_alpha($mensagem[$i]) && !preg_match('/[^\x20-\x7F]/', $mensagem[$i])) {
+            $mensagem[$i] = chr(ord($mensagem[$i]) - 1);
+        }
+    }
+
+    return $mensagem;
+}
+
+while (true) {
+    $num_linhas = intval(fgets(STDIN));
+    if ($num_linhas == 0) {
+        break;
+    }
+
+    for ($i = 0; $i < $num_linhas; $i++) {
+        $linha = trim(fgets(STDIN));
+
+        echo criptografar($linha) . PHP_EOL;
+    }
+}
+?>
