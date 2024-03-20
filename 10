@@ -1,0 +1,33 @@
+<?php
+function decodificarCifraDeCesar($string, $deslocamento) {
+    $tamanho = strlen($string);
+    $resultado = '';
+
+    for ($i = 0; $i < $tamanho; $i++) {
+        $caractere = $string[$i];
+
+        if (ctype_upper($caractere)) {
+            $novo_codigo = ord($caractere) - $deslocamento;
+
+            if ($novo_codigo < ord('A')) {
+                $novo_codigo += 26;
+            }
+
+            $resultado .= chr($novo_codigo);
+        } else {
+            $resultado .= $caractere;
+        }
+    }
+
+    return $resultado;
+}
+
+$n = intval(trim(fgets(STDIN)));
+
+for ($i = 0; $i < $n; $i++) {
+    $string_criptografada = trim(fgets(STDIN));
+    $deslocamento = intval(trim(fgets(STDIN)));
+
+    echo decodificarCifraDeCesar($string_criptografada, $deslocamento) . PHP_EOL;
+}
+?>
