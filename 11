@@ -1,0 +1,36 @@
+<?php
+function ordenarValores($valores) {
+    $pares = [];
+    $impares = [];
+
+    foreach ($valores as $valor) {
+        if ($valor % 2 == 0) {
+            $pares[] = $valor;
+        } else {
+            $impares[] = $valor;
+        }
+    }
+
+    sort($pares);
+
+    rsort($impares);
+
+    $resultado = array_merge($pares, $impares);
+
+    return $resultado;
+}
+
+$n = intval(trim(fgets(STDIN)));
+
+$valores = [];
+
+for ($i = 0; $i < $n; $i++) {
+    $valores[] = intval(trim(fgets(STDIN)));
+}
+
+$valores_ordenados = ordenarValores($valores);
+
+foreach ($valores_ordenados as $valor) {
+    echo $valor . PHP_EOL;
+}
+?>
